@@ -1,0 +1,24 @@
+.header{
+    background-color:#8FBC8F; 
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
+
+.headers-btns{
+    margin-left:21.65vw;
+    display: inline;
+
+}
+
+.header button{
+    width:120px;
+}
+
+.headers-btns button{
+    margin-left:1vw;
+}
+
+.show-users-btn{
+    margin-left: 15vw ;
+}

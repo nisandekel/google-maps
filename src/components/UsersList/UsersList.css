@@ -1,0 +1,29 @@
+
+.users-list{
+    z-index: 1;
+    position: absolute;
+    overflow-y: scroll;
+    height: 100%;
+    width: 30%;
+    resize: horizontal; 
+    background-color:#2F4F4F;
+    color: white;
+}
+
+.userslist-title{
+    color: 	#DAA520;
+    text-align: center;
+    margin: 10px;
+}
+
+.sort-lbl{
+    margin:10px;
+    margin-bottom: 20px;
+}
+
+.user:hover{
+    cursor: pointer;
+    transition: 2s;
+    font-size: 17px;
+}
+

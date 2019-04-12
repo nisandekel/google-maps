@@ -1,0 +1,19 @@
+.user-marker{
+    height: 20px;
+    width: 20px;
+    cursor: default;
+}
+
+.user-marker-target{
+    height: 30px;
+    width: 30px;
+    cursor: default;
+    border: 1px dotted red;
+    border-width: 2px;
+    border-radius: 50%;
+}
+
+
+
+
+

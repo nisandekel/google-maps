@@ -1,0 +1,20 @@
+.profilePic{
+    height: 50px;
+    width: 50px;
+    margin-left:25px; 
+    margin-bottom:15px;
+}
+
+.user-card{
+    height: 150px;
+    width: 145px;
+}
+
+.username{
+    text-align: center;
+    font-weight: bold;
+}
+
+.invisible{
+    display: none;
+}

@@ -1,28 +1,48 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Map from './components/Map/Map.view';
+import Header from './components/Header/Header.view';
+import { connect } from 'react-redux';
+import { changeCordinate } from './components/Map/Map.actions';
+import { fetchUsers, computeUsersDistanceFromLocation } from './components/UsersList/UsersList.actions';
+import { defaultCordinates } from './cordinates/cordinates';
 import './App.css';
 
 class App extends Component {
   render() {
+    let { cordinates, changeCordinate, fetchUsers, usersList, computeUsersDistanceFromLocation } = this.props;
+    if (cordinates === null) {
+      cordinates = { mapCordinates: defaultCordinates, markerCordinates: defaultCordinates }
+    }
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Header markerCordinates={cordinates.markerCordinates} computeUsersDistanceFromLocation={computeUsersDistanceFromLocation}
+          fetchUsers={fetchUsers} changeCordinate={changeCordinate} title={this.props.pageTitle}
+        />
+        <Map usersList={usersList} mapCordinates={cordinates.mapCordinates}
+          markerCordinates={cordinates.markerCordinates} targetUser = {cordinates.targetUser}
+        >
+        </Map>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+
+  const { cordinates, usersList } = state;
+
+  return {
+    cordinates,
+    usersList
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeCordinate: (newCordinates) => dispatch(changeCordinate(newCordinates, true)),
+    fetchUsers: (currentCordinates) => { dispatch(fetchUsers(currentCordinates)) },
+    computeUsersDistanceFromLocation: (currentLocation) => dispatch(computeUsersDistanceFromLocation(currentLocation))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
